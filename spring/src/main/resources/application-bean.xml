@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--<bean id="student" class="com.yf.spring.ioc.bean.Student" p:id="1" p:name="张三">
+
+    </bean>-->
+
+    <!--<bean id="student" class="com.yf.spring.ioc.bean.Student">
+        <property name="id" value="1"></property>
+        <property name="name" value="张三"></property>
+        <property name="teacher" ref="teacher"></property>
+    </bean>
+
+    <bean id="teacher" class="com.yf.spring.ioc.bean.Teacher">
+        <property name="id" value="1"></property>
+        <property name="name" value="张老师"></property>
+    </bean>-->
+
+    <!--<bean class="com.yf.spring.ioc.bean.Class2202">
+        <property name="students">
+            <list>
+                <value>张三</value>
+                <value>李四</value>
+                <value>王五</value>
+            </list>
+
+        </property>
+    </bean>-->
+
+    <bean class="com.yf.spring.ioc.bean.Class2203">
+        <property name="student">
+            <list>
+                <bean class="com.yf.spring.ioc.bean.Student">
+                    <property name="id" value="1"></property>
+                    <property name="name" value="后羿"></property>
+                </bean>
+                <bean class="com.yf.spring.ioc.bean.Student">
+                    <property name="id" value="2"></property>
+                    <property name="name" value="王昭君"></property>
+                </bean>
+                <bean class="com.yf.spring.ioc.bean.Student">
+                    <property name="id" value="3"></property>
+                    <property name="name" value="亚瑟"></property>
+                </bean>
+            </list>
+
+        </property>
+    </bean>
+
+    <bean class="com.yf.spring.ioc.bean.Class2204">
+        <property name="students">
+            <map>
+                <entry key="1" value="张三"></entry>
+                <entry key="2" value="李四"></entry>
+                <entry key="3" value="王五"></entry>
+            </map>
+
+        </property>
+    </bean>
+
+</beans>

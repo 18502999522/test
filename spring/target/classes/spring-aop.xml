@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+">
+
+    <!-- 1..配置被切面，也就是主业务类 -->
+    <bean id="account" class="com.yf.spring.aop.springaop.Bank"/>
+
+    <!-- 2.配置切面，也就是辅助业务类 -->
+    <bean id="accountHelper" class="com.yf.spring.aop.springaop.BankHelper"/>
+
+    <!-- 3.让切点和通知相遇 -->
+    <aop:config>
+        <!-- 4.切入点配置，因为被切面中有太多太多的点可以切入，所以需要告知：从哪点切入 -->
+        <!-- expression是在描述这个点:  Account类中的out() -->
+        <aop:pointcut id="accountPointCut" expression="execution(int com.yf.spring.aop.springaop.Bank.out())"/>
+
+        <!-- 5.通知配置，通知是切面中的点，通知与切点的关系是重叠关系，切面是可以上下游走来更换通知点的 -->
+        <!-- 5.1 指出了通知所在的面为：accountHelper -->
+        <aop:aspect ref="accountHelper">
+            <!-- 5.2 指出了通知所在的点为：validAuth -->
+            <!-- 前置通知: 执行在目标被调用之前-->
+           <!-- <aop:before method="validate" pointcut-ref="accountPointCut"/>-->
+
+            <!-- 后置通知: 执行在目标被调用之后-->
+            <!--<aop:after method="send" pointcut-ref="accountPointCut"/>-->
+
+           <!-- <aop:around method="around" pointcut-ref="accountPointCut"></aop:around>-->
+            <!--返回前通知: 执行在目标被调用之后-->
+           <!-- <aop:after-returning method="afterReturn" pointcut-ref="accountPointCut" returning="result"/>-->
+
+            <aop:after-throwing method="except" pointcut-ref="accountPointCut" ></aop:after-throwing>
+
+
+        </aop:aspect>
+
+    </aop:config>
+
+
+</beans>

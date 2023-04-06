@@ -10,6 +10,8 @@ public class User {
     private Integer userType;
 
     private Integer userStatus;
+    
+    int i = 10;
 
     public Integer getUserId() {
         return userId;

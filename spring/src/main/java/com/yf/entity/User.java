@@ -11,7 +11,7 @@ public class User {
 
     private Integer userStatus;
     
-    int i = 10;
+    int i = 20;
 
     public Integer getUserId() {
         return userId;
